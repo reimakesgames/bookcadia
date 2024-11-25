@@ -66,16 +66,40 @@ nav .links {
 	gap: 16px;
 }
 
+div.feed {
+	width: min-content;
+	margin-top: 40px;
+	margin-left: auto;
+	margin-right: auto;
+
+	display: flex;
+	align-items: flex-start;
+	gap: 32px;
+}
+
+div.ad-skyscraper {
+	width: 120px;
+	height: 600px;
+	background-color: var(--background-medium);
+	margin-top: 64px;
+}
+
+div.ad-medium-rect {
+	width: 300px;
+	height: 250px;
+	background-color: var(--background-medium);
+	margin-top: 64px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 main.feed {
-	width: calc(720px - 32px);
+	width: calc(800px - 32px);
 	padding: 16px;
 
 	border-left: 1px solid var(--outline-low);
 	border-right: 1px solid var(--outline-low);
-
-	margin-top: 40px;
-	margin-left: auto;
-	margin-right: auto;
 }
 
 main hr {
@@ -123,7 +147,7 @@ main .carousel .book {
 	height: 300px;
 
 	background-color: var(--background-medium);
-	border-radius: 8px;
+	border-radius: 0;
 	border: 1px solid var(--outline-low);
 
 	margin-top: 16px;
@@ -162,5 +186,5 @@ main .carousel .book img {
 
 	transition: 0.2s all;
 
-	border-radius: 8px;
+	border-radius: 0;
 }

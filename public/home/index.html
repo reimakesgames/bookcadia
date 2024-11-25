@@ -9,53 +9,54 @@
 		<title>Home</title>
 	</head>
 	<body>
-		<nav class="navbar">
-			<!-- TODO: make this a component -->
-			<a href="https://youtu.be/dQw4w9WgXcQ" class="home">BOOKCADIA</a>
-			<div class="links">
-				<a href="" target="_blank" rel="noopener noreferrer">
-					Library
-				</a>
-				<a href="" target="_blank" rel="noopener noreferrer">
-					Catalog
-				</a>
-				<a href="" target="_blank" rel="noopener noreferrer"> Cart </a>
-				<a href="" target="_blank" rel="noopener noreferrer">
-					Profile
-				</a>
+		<header id="navbar">
+			<!-- component -->
+		</header>
+		<div class="feed">
+			<div class="ad-medium-rect">
+				An ad would be placed here, BUT I DON'T KNOW HOW TO DO THAT!!!
 			</div>
-		</nav>
-		<main class="feed">
-			<div class="greeting">Welcome, student!</div>
-			<div class="subtext">What would you like to read today?</div>
-			<hr />
-			<div class="info">
-				<div class="title">
-					INTRODUCTION TO LOGARITHMS AND EXPONENTS
+			<main class="feed">
+				<div class="greeting">Welcome, student!</div>
+				<div class="subtext">What would you like to read today?</div>
+				<hr />
+				<div class="info">
+					<div class="title">
+						INTRODUCTION TO LOGARITHMS AND EXPONENTS
+					</div>
+					<div class="author">By JOHN DOE</div>
+					<div class="description">
+						A simplified guide to logarithms and exponents.
+					</div>
 				</div>
-				<div class="author">By JOHN DOE</div>
-				<div class="description">
-					A simplified guide to logarithms and exponents.
+				<div class="carousel">
+					<a
+						href=""
+						target="_blank"
+						rel="noopener noreferrer"
+						class="book"
+					>
+						<img src="../assets/book1.png" alt="book1" />
+					</a>
+					<a
+						href=""
+						target="_blank"
+						rel="noopener noreferrer"
+						class="book"
+					>
+						<img src="../assets/book2.png" alt="book1" />
+					</a>
 				</div>
+			</main>
+			<div class="ad-medium-rect">
+				An ad would be placed here, BUT I DON'T KNOW HOW TO DO THAT!!!
 			</div>
-			<div class="carousel">
-				<a
-					href=""
-					target="_blank"
-					rel="noopener noreferrer"
-					class="book"
-				>
-					<img src="../assets/book1.png" alt="book1" />
-				</a>
-				<a
-					href=""
-					target="_blank"
-					rel="noopener noreferrer"
-					class="book"
-				>
-					<img src="../assets/book2.png" alt="book1" />
-				</a>
-			</div>
-		</main>
+		</div>
+		<script type="module">
+			import Navbar from "../components/navbar.js"
+			const navbar = Navbar()
+			document.getElementById("navbar").appendChild(navbar)
+		</script>
+		<script type="module" src="../js/home.js"></script>
 	</body>
 </html>
