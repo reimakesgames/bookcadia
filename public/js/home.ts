@@ -49,31 +49,32 @@ function createCarousel() {
 			createClickEventsForBooks()
 
 			// filter elements
-			const mathemathicsFilter = document.getElementById(
-				"filter-1"
-			) as HTMLInputElement
-			const fictionFilter = document.getElementById(
-				"filter-2"
-			) as HTMLInputElement
+			const filters = document.querySelectorAll(
+				'input[type="checkbox"][id^="filter-"]'
+			) as NodeListOf<HTMLInputElement>
 			const booksHtml = document.getElementsByClassName("book")
 
 			function filterBooks() {
 				for (let i = 0; i < booksHtml.length; i++) {
 					const book = booksHtml[i] as HTMLElement
 					const topic = book.getAttribute("topic")
+					let showBook = false
+
+					filters.forEach((filter) => {
+						let label = filter.parentElement?.querySelector("label")
+						if (
+							filter.checked &&
+							topic?.includes(
+								label?.textContent?.toLowerCase() || ""
+							)
+						) {
+							showBook = true
+						}
+					})
+
 					if (
-						mathemathicsFilter?.checked &&
-						topic?.includes("mathematics")
-					) {
-						book.classList.remove("hide")
-					} else if (
-						fictionFilter?.checked &&
-						topic?.includes("fiction")
-					) {
-						book.classList.remove("hide")
-					} else if (
-						!mathemathicsFilter?.checked &&
-						!fictionFilter?.checked
+						showBook ||
+						Array.from(filters).every((filter) => !filter.checked)
 					) {
 						book.classList.remove("hide")
 					} else {
@@ -82,12 +83,10 @@ function createCarousel() {
 				}
 			}
 
-			mathemathicsFilter?.addEventListener("change", () => {
-				filterBooks()
-			})
-
-			fictionFilter?.addEventListener("change", () => {
-				filterBooks()
+			filters.forEach((filter) => {
+				filter.addEventListener("change", () => {
+					filterBooks()
+				})
 			})
 
 			filterBooks()
