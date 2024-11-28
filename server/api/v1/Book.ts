@@ -8,6 +8,7 @@ const books = [
 		description:
 			"An in-depth study of exponential equations, inequalities, and functions.",
 		file: "Exponentials.pdf",
+		topic: ["mathematics", "algebra"],
 	},
 	{
 		id: 2,
@@ -16,12 +17,15 @@ const books = [
 		description:
 			"A comprehensive guide to the unit circle and trigonometry.",
 		file: "UnitCircle.pdf",
+		topic: ["mathematics", "trigonometry"],
 	},
 	{
 		id: 3,
-		title: "Book 3",
+		title: "Neofighters (Summary)",
 		author: "Rei Caffie",
-		description: "Description for book 3",
+		description: "The official summary of the Neofighters novel.",
+		file: "Neofighters.pdf",
+		topic: ["fiction", "action"],
 	},
 ]
 
@@ -39,6 +43,7 @@ router.get("/:id", (req, res) => {
 		author: books[bookId - 1]?.author,
 		description: books[bookId - 1]?.description,
 		file: books[bookId - 1]?.file,
+		topic: books[bookId - 1]?.topic,
 	})
 })
 

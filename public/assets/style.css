@@ -66,6 +66,10 @@ header {
 	left: 0;
 }
 
+.hide {
+	display: none !important;
+}
+
 nav.navbar {
 	background-color: var(--background-medium);
 

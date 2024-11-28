@@ -9,6 +9,8 @@ function createBookElement(book) {
     loader.src = "/assets/loader.png";
     loader.classList.add("loader");
     bookElement.appendChild(loader);
+    // add property to the book element
+    bookElement.setAttribute("topic", book.topic.join(";"));
     fetch(`/api/v1/books/${book.id}/cover`).then((response) => {
         if (response.ok) {
             bookElement.removeChild(loader);
@@ -39,6 +41,38 @@ function createCarousel() {
             carousel?.appendChild(bookElement);
         });
         createClickEventsForBooks();
+        // filter elements
+        const mathemathicsFilter = document.getElementById("filter-1");
+        const fictionFilter = document.getElementById("filter-2");
+        const booksHtml = document.getElementsByClassName("book");
+        function filterBooks() {
+            for (let i = 0; i < booksHtml.length; i++) {
+                const book = booksHtml[i];
+                const topic = book.getAttribute("topic");
+                if (mathemathicsFilter?.checked &&
+                    topic?.includes("mathematics")) {
+                    book.classList.remove("hide");
+                }
+                else if (fictionFilter?.checked &&
+                    topic?.includes("fiction")) {
+                    book.classList.remove("hide");
+                }
+                else if (!mathemathicsFilter?.checked &&
+                    !fictionFilter?.checked) {
+                    book.classList.remove("hide");
+                }
+                else {
+                    book.classList.add("hide");
+                }
+            }
+        }
+        mathemathicsFilter?.addEventListener("change", () => {
+            filterBooks();
+        });
+        fictionFilter?.addEventListener("change", () => {
+            filterBooks();
+        });
+        filterBooks();
     });
 }
 createCarousel();
