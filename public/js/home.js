@@ -1,5 +1,24 @@
+const carousel = document.getElementById("carousel");
+function createBookElement(book) {
+    const bookElement = document.createElement("div");
+    bookElement.id = `book-${book.id}`;
+    bookElement.classList.add("book");
+    const bookImg = document.createElement("img");
+    bookImg.alt = "Book cover";
+    const loader = document.createElement("img");
+    loader.src = "/assets/loader.png";
+    loader.classList.add("loader");
+    bookElement.appendChild(loader);
+    fetch(`/api/v1/books/${book.id}/cover`).then((response) => {
+        if (response.ok) {
+            bookElement.removeChild(loader);
+            bookImg.src = `/api/v1/books/${book.id}/cover`;
+            bookElement.appendChild(bookImg);
+        }
+    });
+    return bookElement;
+}
 function createClickEventsForBooks() {
-    const carousel = document.getElementById("carousel");
     if (!carousel) {
         return;
     }
@@ -11,5 +30,16 @@ function createClickEventsForBooks() {
         });
     }
 }
-createClickEventsForBooks();
+function createCarousel() {
+    fetch("/api/v1/books/my-books")
+        .then((response) => response.json())
+        .then((books) => {
+        books.forEach((book) => {
+            const bookElement = createBookElement(book);
+            carousel?.appendChild(bookElement);
+        });
+        createClickEventsForBooks();
+    });
+}
+createCarousel();
 export {};
